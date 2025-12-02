@@ -3,11 +3,80 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TripPlannerHome from './TripPlannerHome';
+import FutureTripPage from './FutureTripPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const TRIP_API = `http://localhost:3000`;
+
+const router = createBrowserRouter([
+  // {
+  //   path: '/login',
+  //   element: <LoginPage/>,
+  // },
+  {
+    path: '/',
+    element: <TripPlannerHome/>,
+    loader() {
+      localStorage.setItem("userId", "0");
+      const userId = localStorage.getItem("userId");
+
+      return fetch(
+        `${TRIP_API}/trips?userId=${userId}`
+      ).then((response) => {
+        let blah = response.json();
+        console.log(blah);
+        return blah;
+      });
+    }
+  },
+  // {
+  //   path: '/past/:tripname',
+  //   element: <PastTrip/>,
+  //   loader(routeInfo) {
+  //     const tripname = routeInfo.params.tripname;
+  //     return fetch(
+  //       `${TRIP_API}/${tripname}`
+  //     ).then((response) => {
+  //       return response.json();
+  //     });
+  //   }
+  // },
+  {
+    path: '/future/:tripname',
+    element: <FutureTripPage/>,
+    loader(routeInfo) {
+      const tripName = routeInfo.params.tripname;
+
+      const userId = localStorage.getItem("userId");
+
+      return fetch(`${TRIP_API}/trips?name=${tripName}&userId=${userId}`)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      });
+    }
+  },
+  // {
+  //   path: '/future/:tripname/edit',
+  //   element: <TripEdit/>,
+  //   loader(routeInfo) {
+  //     const tripname = routeInfo.params.tripname;
+  //     return fetch(
+  //       `${TRIP_API}/${tripname}`
+  //     ).then((response) => {
+  //       return response.json();
+  //     });
+  //   }
+  // }
+]);
+
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

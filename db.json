@@ -1,0 +1,32 @@
+{
+    "users": [
+        {
+            "id": "0",
+            "name": "Ashton"
+        }
+    ],
+    
+    "trips": [
+        {
+            "id": "0",
+            "userId": "0",
+            "name": "Hawaii",
+            "date": "2026-02-10",
+            "type": "future",
+            "comments": ["0", "1"]
+        }
+    ],
+
+    "comments": [
+        {
+            "id": "0",
+            "tripId": "0",
+            "text": "This was a great trip!"
+        },
+        {
+            "id": "1",
+            "tripId": "0",
+            "text": "Can't wait to go again!"
+        }
+    ]
+}
