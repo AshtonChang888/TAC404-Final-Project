@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import { faArrowUp, faArrowDown, faMinus, faPlus, faHeart, faThumbsUp, faThumbsDown, faAngry } from "@fortawesome/free-solid-svg-icons";
 // import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { Navbar, Container } from 'react-bootstrap';
 
 
 export default function TripPlannerHome(props) {
@@ -13,6 +14,15 @@ export default function TripPlannerHome(props) {
     return (
         <div className="container">
             <h1>My Trips</h1>
+            <Navbar>
+                <Container className="justify-content-between">
+                    <Link to={`/new-trip`}>
+                        <button type="button">
+                            New Trip
+                        </button>
+                    </Link>
+                </Container>
+            </Navbar>
             {trips.map((singleTrip) => {
                 return (
                     <Link to={`/future/${singleTrip.name}`}>

@@ -13,6 +13,7 @@
             "name": "Hawaii",
             "date": "2026-02-10",
             "type": "future",
+            "bookmarked": "false",
             "comments": ["0", "1"]
         }
     ],
@@ -28,5 +29,14 @@
             "tripId": "0",
             "text": "Can't wait to go again!"
         }
+    ],
+
+    "airlines": [
+        { "id": 1, "name": "Delta Air Lines" },
+        { "id": 2, "name": "United Airlines" },
+        { "id": 3, "name": "American Airlines" },
+        { "id": 4, "name": "Alaska Airlines" },
+        { "id": 5, "name": "Southwest Airlines" }
     ]
+
 }

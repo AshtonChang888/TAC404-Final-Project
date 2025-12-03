@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TripPlannerHome from './TripPlannerHome';
 import FutureTripPage from './FutureTripPage';
+import NewTripPage from './NewTripPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const TRIP_API = `http://localhost:3000`;
+
 
 const router = createBrowserRouter([
   // {
@@ -26,9 +29,7 @@ const router = createBrowserRouter([
       return fetch(
         `${TRIP_API}/trips?userId=${userId}`
       ).then((response) => {
-        let blah = response.json();
-        console.log(blah);
-        return blah;
+        return response.json();
       });
     }
   },
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       });
     }
   },
+  {
+    path: '/new-trip',
+    element: <NewTripPage/>
+  }
   // {
   //   path: '/future/:tripname/edit',
   //   element: <TripEdit/>,
