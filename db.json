@@ -32,11 +32,10 @@
     ],
 
     "airlines": [
-        { "id": 1, "name": "Delta Air Lines" },
-        { "id": 2, "name": "United Airlines" },
-        { "id": 3, "name": "American Airlines" },
-        { "id": 4, "name": "Alaska Airlines" },
-        { "id": 5, "name": "Southwest Airlines" }
+        { "id": 0, "name": "Delta Air Lines" },
+        { "id": 1, "name": "United Airlines" },
+        { "id": 2, "name": "American Airlines" },
+        { "id": 3, "name": "Korean Airlines" },
+        { "id": 4, "name": "Southwest Airlines" }
     ]
-
 }
