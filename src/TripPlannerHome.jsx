@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowUp, faArrowDown, faMinus, faPlus, faHeart, faThumbsUp, faThumbsDown, faAngry } from "@fortawesome/free-solid-svg-icons";
 // import { useState } from "react";

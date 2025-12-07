@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 export default function Dropdown(props) {
     return (
-        <div>
+        <div className="mb-3">
             <label
                 className="form-label"
                 htmlFor={props.label}
@@ -10,7 +10,7 @@ export default function Dropdown(props) {
                 {props.label}
             </label>
             <select
-                className="form-select"
+                className={`form-select ${props.isInvalid ? "is-invalid" : ""}`}
                 id={props.label}
                 value={props.value}
                 onChange={(event) => {
@@ -18,9 +18,19 @@ export default function Dropdown(props) {
                 }}
             >
                 {props.choices.map((choice) => {
-                    return <option value={choice.value}>{choice.label}</option>
+                    return <option 
+                                key={choice.value}
+                                value={choice.value}
+                            >
+                                {choice.label}
+                            </option>
                 })}
             </select>
+            {props.isInvalid && (
+                <div className="invalid-feedback">
+                    {props.errorMsg}
+                </div>
+            )}
         </div>
     )
 }

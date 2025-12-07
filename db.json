@@ -31,11 +31,41 @@
         }
     ],
 
-    "airlines": [
-        { "id": 0, "name": "Delta Air Lines" },
-        { "id": 1, "name": "United Airlines" },
-        { "id": 2, "name": "American Airlines" },
-        { "id": 3, "name": "Korean Airlines" },
-        { "id": 4, "name": "Southwest Airlines" }
-    ]
+
+    "hotels": [
+        {
+            "id": 0,
+            "name": "Hilton"
+        },
+        {
+            "id": 1,
+            "name": "DoubleTree"
+        }
+    ],
+
+    "transport": {
+        "airline": [
+            { 
+                "id": "0", 
+                "name": "American Airlines" 
+            },
+            { 
+                "id": "1", 
+                "name": "Delta"
+            },
+            {
+                "id": "2",
+                "name": "Korean Airlines"
+            }
+        ],
+        "car_rental": [
+            { "id": "HZ", "name": "Hertz" },
+            { "id": "EN", "name": "Enterprise" }
+        ],
+        "train": [
+            { "id": "AM", "name": "Amtrak" },
+            { "id": "EU", "name": "Eurostar" }
+        ]
+    }
+    
 }
