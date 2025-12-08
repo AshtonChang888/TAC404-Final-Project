@@ -11,11 +11,11 @@
   "bookmarked": [],
   "trips": [
     {
-      "id": "174e",
+      "id": "6bbd",
       "legs": [
         {
-          "id": 1765163441984,
-          "startDate": "6/2/2026",
+          "id": 1765172013754,
+          "startDate": "6/10/26",
           "startLoc": "Las Vegas",
           "endLoc": "Oahu, Hawaii",
           "accommodationType": "hotel",
@@ -27,20 +27,138 @@
           "editing": true
         },
         {
-          "id": 1765163505877,
-          "startDate": "6/10/2026",
+          "id": 1765172037999,
+          "startDate": "6/16/26",
           "startLoc": "Oahu, Hawaii",
           "endLoc": "Honolulu, Hawaii",
           "accommodationType": "hotel",
-          "hotelName": "Hilton",
+          "hotelName": "DoubleTree",
           "accommodationStatus": false,
           "transportType": "airline",
           "transportName": "American Airlines",
-          "comments": "Going to go scuba diving",
+          "comments": "Going scuba diving here",
+          "editing": true
+        },
+        {
+          "id": 1765172085324,
+          "startDate": "6/16/26",
+          "startLoc": "Honolulu, Hawaii",
+          "endLoc": "Los Angeles, California",
+          "accommodationType": "airbnb",
+          "hotelName": "N/A",
+          "accommodationStatus": true,
+          "transportType": "airline",
+          "transportName": "Delta",
+          "comments": "Going to Hollywood",
           "editing": true
         }
       ],
       "name": "Hawaii 2026",
+      "bookmarkedAt": null
+    },
+    {
+      "legs": [
+        {
+          "id": 1765173050480,
+          "startDate": "1/15/26",
+          "startLoc": "Las Vegas",
+          "endLoc": "London, UK",
+          "accommodationType": "hotel",
+          "hotelName": "Mariott",
+          "accommodationStatus": true,
+          "transportType": "airline",
+          "transportName": "British Airways",
+          "comments": "",
+          "editing": true
+        },
+        {
+          "id": 1765173076386,
+          "startDate": "1/20/26",
+          "startLoc": "London, UK",
+          "endLoc": "Milan, Italy",
+          "accommodationType": "hotel",
+          "hotelName": "DoubleTree",
+          "accommodationStatus": true,
+          "transportType": "airline",
+          "transportName": "British Airways",
+          "comments": "Staying for only 3 days",
+          "editing": true
+        },
+        {
+          "id": 1765173104162,
+          "startDate": "1/23/26",
+          "startLoc": "Milan, Italy",
+          "endLoc": "Paris, France",
+          "accommodationType": "hotel",
+          "hotelName": "Mariott",
+          "accommodationStatus": false,
+          "transportType": "airline",
+          "transportName": "British Airways",
+          "comments": "Going to see Eiffel Tower",
+          "editing": true
+        },
+        {
+          "id": 1765173135397,
+          "startDate": "1/30/26",
+          "startLoc": "Paris, France",
+          "endLoc": "Las Vegas",
+          "accommodationType": "airbnb",
+          "hotelName": "N/A",
+          "accommodationStatus": true,
+          "transportType": "airline",
+          "transportName": "British Airways",
+          "comments": "",
+          "editing": true
+        }
+      ],
+      "name": "Europe Spring 2026",
+      "id": "f17c",
+      "bookmarkedAt": null
+    },
+    {
+      "id": "e88e",
+      "legs": [
+        {
+          "id": 1765173248402,
+          "startDate": "3/1/26",
+          "startLoc": "Las Vegas",
+          "endLoc": "Yellowstone, Wyoming",
+          "accommodationType": "airbnb",
+          "hotelName": "N/A",
+          "accommodationStatus": true,
+          "transportType": "car_rental",
+          "transportName": "Enterprise",
+          "comments": "",
+          "editing": true
+        },
+        {
+          "id": 1765173274512,
+          "startDate": "3/1/26",
+          "startLoc": "Yellowstone, Wyoming",
+          "endLoc": "Seattle, Washington",
+          "accommodationType": "hotel",
+          "hotelName": "Hilton",
+          "accommodationStatus": false,
+          "transportType": "car_rental",
+          "transportName": "Enterprise",
+          "comments": "",
+          "editing": true
+        },
+        {
+          "id": 1765173301726,
+          "startDate": "3/1/26",
+          "startLoc": "Seattle, Washington",
+          "endLoc": "San Francisco, California",
+          "accommodationType": "hotel",
+          "hotelName": "Hilton",
+          "accommodationStatus": true,
+          "transportType": "car_rental",
+          "transportName": "Hertz",
+          "comments": "",
+          "editing": true
+        }
+      ],
+      "name": "US Roadtrip 2026",
       "bookmarkedAt": null
     }
   ],

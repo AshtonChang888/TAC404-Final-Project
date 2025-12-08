@@ -1,20 +1,14 @@
 import { Link, useLoaderData } from "react-router-dom";
 import TripLegBlock from "./TripLegBlock";
+import { useEffect } from "react";
 
 export default function FutureTripPage() {
     const trips = useLoaderData();
     const trip = Array.isArray(trips) ? trips[0] : trips;
 
-    if(!trip) {
-        return (
-            <div className="container mt-5">
-                <h2>Trip not found</h2>
-                <Link to="/">
-                    Back to Home
-                </Link>
-            </div>
-        );
-    }
+    useEffect(() => {
+        document.title = trip.name;  
+    }, [trip]);
 
     return (
         <div className="container mt-4">
@@ -32,8 +26,7 @@ export default function FutureTripPage() {
                             <div className="card">
                                 <div className="card-body">
                                     <TripLegBlock
-                                        data={leg}
-                                        transportMap={{ airline: [], car_rental: [], train: [] }}
+                                        data={{ ...leg, editing: false }}
                                         hotelMap={{}}
                                         onDelete={null} // disable delete for saved trips
                                     />
@@ -42,7 +35,7 @@ export default function FutureTripPage() {
                         </div>
                     ))
                 ) : (
-                    <p>No trip legs</p>
+                    <p>No trip legs yet</p>
                 )}
             </div>
         </div>

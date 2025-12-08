@@ -1,9 +1,9 @@
-export default function TripLegBlock({ data, hotelMap, onDelete }) {
-    const transportTypeLabels = {
-        "airline": "Airline",
-        "car_rental": "Car Rental",
-        "train": "Train"
-    }
+export default function TripLegBlock({ data, onDelete }) {
+    // const transportTypeLabels = {
+    //     "airline": "Airline",
+    //     "car_rental": "Car Rental",
+    //     "train": "Train"
+    // }
     return (
         <div className="card mb-3 p-3">
             <div><strong>Start Date:</strong> {data.startDate} </div>

@@ -36,7 +36,11 @@ function structureAndSort(array) {
 }
 
 
-export default function NewTripPage() {    
+export default function NewTripPage() {   
+    useEffect(() => {
+        document.title = "Create New Trip";  
+    }, []);
+
     const [tripId, setTripId] = useState(null);
     const [tripName, setTripName] = useState("");
     const [tripLegBlocks, setTripLegBlocks] = useState([]);

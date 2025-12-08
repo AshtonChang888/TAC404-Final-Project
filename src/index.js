@@ -34,25 +34,11 @@ const router = createBrowserRouter([
       });
     }
   },
-  // {
-  //   path: '/past/:tripname',
-  //   element: <PastTrip/>,
-  //   loader(routeInfo) {
-  //     const tripname = routeInfo.params.tripname;
-  //     return fetch(
-  //       `${TRIP_API}/${tripname}`
-  //     ).then((response) => {
-  //       return response.json();
-  //     });
-  //   }
-  // },
   {
     path: '/trips/:tripid',
     element: <FutureTripPage/>,
     loader(routeInfo) {
       const tripid = routeInfo.params.tripid;
-
-      const userId = localStorage.getItem("userId");
 
       return fetch(`${TRIP_API}/trips/${tripid}`)
       .then((response) => {
@@ -65,18 +51,6 @@ const router = createBrowserRouter([
     path: '/new-trip',
     element: <NewTripPage/>
   }
-  // {
-  //   path: '/future/:tripname/edit',
-  //   element: <TripEdit/>,
-  //   loader(routeInfo) {
-  //     const tripname = routeInfo.params.tripname;
-  //     return fetch(
-  //       `${TRIP_API}/${tripname}`
-  //     ).then((response) => {
-  //       return response.json();
-  //     });
-  //   }
-  // }
 ]);
 
 
