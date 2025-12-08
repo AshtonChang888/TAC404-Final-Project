@@ -5,12 +5,11 @@ export default function RadioButtons(props) {
                 {props.title}
             </div>
             {props.options.map((option) => (
-                <div className="form-check form-check-inline">
+                <div className="form-check form-check-inline" key={option.value}>
                     <input
                         className={`form-check-input ${props.isInvalid ? "is-invalid" : ""}`}
                         type="radio"
                         name={props.name}
-                        id={`${option.value}-${props.name}`}
                         checked={props.value === option.value}
                         onChange={() => {
                             props.onChange(option.value);

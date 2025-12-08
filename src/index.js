@@ -24,11 +24,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <TripPlannerHome/>,
     loader() {
-      localStorage.setItem("userId", "0");
-      const userId = localStorage.getItem("userId");
+      // localStorage.setItem("userId", "0");
+      // const userId = localStorage.getItem("userId");
 
       return fetch(
-        `${TRIP_API}/trips?userId=${userId}`
+        `${TRIP_API}/trips`
       ).then((response) => {
         return response.json();
       });
@@ -47,14 +47,14 @@ const router = createBrowserRouter([
   //   }
   // },
   {
-    path: '/future/:tripname',
+    path: '/trips/:tripid',
     element: <FutureTripPage/>,
     loader(routeInfo) {
-      const tripName = routeInfo.params.tripname;
+      const tripid = routeInfo.params.tripid;
 
       const userId = localStorage.getItem("userId");
 
-      return fetch(`${TRIP_API}/trips?name=${tripName}&userId=${userId}`)
+      return fetch(`${TRIP_API}/trips/${tripid}`)
       .then((response) => {
         console.log(response);
         return response.json();

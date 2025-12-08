@@ -7,18 +7,22 @@ import RadioButtons from "./RadioButtons";
 import DropdownWithConditional from "./DropdownWithConditional";
 import CheckBox from "./CheckBox";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
 
+const TRIP_API = `http://localhost:3000`;
+
 function fetchTransport() {
-    return fetch(`http://localhost:3000/transport`)
+    return fetch(`${TRIP_API}/transport`)
         .then(response => response.json());
 }
 
 function fetchHotels() {
-    return fetch(`http://localhost:3000/hotels`)
+    return fetch(`${TRIP_API}/hotels`)
         .then(response => response.json());
 }
+
 
 //Change array to include value, label map instead of id, name
 //Also sort alphabetically
@@ -33,8 +37,11 @@ function structureAndSort(array) {
 
 
 export default function NewTripPage() {    
-    const [tripBlocks, setTripBlocks] = useState([]);
+    const [tripId, setTripId] = useState(null);
+    const [tripName, setTripName] = useState("");
+    const [tripLegBlocks, setTripLegBlocks] = useState([]);
 
+    const [startDate, setStartDate] = useState("");
     const [startLoc, setStartLoc] = useState("");
     const [endLoc, setEndLoc] = useState("");
 
@@ -56,6 +63,16 @@ export default function NewTripPage() {
 
     const [formErrors, setFormErrors] = useState({});
 
+    function addTripLegBlock(newLeg) {
+        setTripLegBlocks(prev => [...prev, newLeg]);
+    }
+
+    function handleDeleteLeg(idxToDelete) {
+        setTripLegBlocks(prev =>
+            prev.filter((_, i) => i!== idxToDelete)
+        );
+    }
+
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -69,7 +86,7 @@ export default function NewTripPage() {
         if(!transportType) {
             errors.transportType = "Select a transport type";
         }
-        if(transportType === "plane" && !airline) {
+        if(transportType === "airline" && !airline) {
             errors.airline = "Select an airline";
         }
         if(transportType === "car_rental" && !carRental) {
@@ -91,7 +108,85 @@ export default function NewTripPage() {
             return;
         }
 
+        let transportName = "N/A";
+
+        if(transportType === "airline" && airline) {
+            const match = transportMap.airline.find(o => o.value === airline);
+            transportName = match?.label || "N/A";
+        } 
+        else if(transportType === "car_rental" && carRental) {
+            const match = transportMap.car_rental.find(o => o.value === carRental);
+            transportName = match?.label || "N/A";
+        }
+        else if(transportType === "train" && train) {
+            const match = transportMap.train.find(o => o.value === train);
+            transportName = match?.label || "N/A";
+        }
+
+        let hotelName = "N/A";
+        if(accommodationType === "hotel" && hotel) {
+            const match = hotelMap.find(o => o.value === hotel);
+            hotelName = match?.label || "N/A";
+        }
+
+        const newLeg = {
+            id: Date.now(),
+            startDate,
+            startLoc,
+            endLoc,
+            accommodationType,
+            hotelName,
+            accommodationStatus,
+
+            transportType,
+            transportName,
+
+            comments,
+            editing: true
+        };
+        
+        addTripLegBlock(newLeg);
+
         toast.success("Trip leg saved successfully!");
+    }
+
+
+    function handleSaveTrip() {
+        if(tripLegBlocks.length === 0) {
+            toast.error("Add at least one trip leg before saving the trip.");
+            return;
+        }
+
+        const bodyContent = { 
+            legs: tripLegBlocks,
+            name: tripName
+        };
+
+        const method = tripId ? "PUT" : "POST";
+        const url = tripId ? `${TRIP_API}/trips/${tripId}` : `${TRIP_API}/trips`;
+
+        fetch(url, {
+            method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bodyContent),
+        })
+        .then(response => {
+            if(!response.ok) {
+                toast.error("Internal error with saving trip, please try again")
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if(!tripId) {
+                setTripId(data.id);
+            }
+            toast.success(`Trip ${method === "POST" ? "saved" : "updated"} successfully!`);
+        })
+        .catch(err => {
+            console.error(err);
+            toast.error("Error saving trip. Try again");
+        });
     }
 
     useEffect(() => {
@@ -119,8 +214,8 @@ export default function NewTripPage() {
             label: "N/A"
         },
         { 
-            value: "plane", 
-            label: "Plane"},
+            value: "airline", 
+            label: "Airline"},
         {
             value: "car_rental",
             label: "Car Rental", 
@@ -133,11 +228,33 @@ export default function NewTripPage() {
 
 
     return (
-        <div className="container">
+        <div className="container mt-4">
+            <div className="mb-3">
+                <Link to={`/`}>
+                    Home
+                </Link>
+            </div>
             <div className="row">
                 <div className="col">
                     <h1 className="h1">Trip Leg Options</h1>
                     <form onSubmit={handleSubmit}>
+                        <TextInput
+                            id="tripname"
+                            label="Trip Name"
+                            value={tripName}
+                            onChange={(newName) => {
+                                setTripName(newName);
+                            }}
+                        />
+                        <TextInput
+                            id="startdate"
+                            label="Start Date"
+                            value={startDate}
+                            onChange={(newStartDate) => {
+                                setStartDate(newStartDate);
+                            }}
+                        />
+
                         <TextInput
                             id="startloc"
                             label="Start Location"
@@ -200,7 +317,7 @@ export default function NewTripPage() {
                                 errorMsg: formErrors.transportType
                             }}
                             children={{        
-                                plane: {
+                                airline: {
                                     label: "Airline",
                                     value: airline,
                                     choices: transportMap.airline,
@@ -237,7 +354,7 @@ export default function NewTripPage() {
                         />
 
                         <button type="submit" className="btn btn-primary mb-3">
-                            Save
+                            Save Trip Leg
                         </button>
                         <button 
                             className="btn btn-secondary mb-3 ms-3"
@@ -255,15 +372,34 @@ export default function NewTripPage() {
                                 setAccommodationStatus(false);
                             }}
                         >
-                            Reset
+                            Reset Choices
+                        </button>
+                        <button 
+                            className="btn btn-success mb-3 ms-3"
+                            type="button"
+                            onClick={handleSaveTrip}
+                        >
+                            Save Entire Trip
                         </button>
                     </form>
                 </div>
                 <div className="col">
-                    {tripBlocks.length === 0 && (
-                        <div>
-                            Nothing yet.
-                        </div>
+                    <h3 className="h3">Current Trip Legs</h3>
+                    {tripLegBlocks.length === 0 ? 
+                    (
+                        <div>Nothing yet</div>
+                    ) : 
+                    (
+                        tripLegBlocks.map((leg, index) => (
+                            <TripLegBlock 
+                                data={leg} 
+                                transportMap={transportMap}
+                                hotelMap={hotelMap}
+                                onDelete={() =>
+                                    handleDeleteLeg(index)
+                                }
+                            />
+                        ))
                     )}
                 </div>
             </div>

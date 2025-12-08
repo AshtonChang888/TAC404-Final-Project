@@ -1,71 +1,117 @@
 {
-    "users": [
-        {
-            "id": "0",
-            "name": "Ashton"
-        }
-    ],
-    
-    "trips": [
-        {
-            "id": "0",
-            "userId": "0",
-            "name": "Hawaii",
-            "date": "2026-02-10",
-            "type": "future",
-            "bookmarked": "false",
-            "comments": ["0", "1"]
-        }
-    ],
-
-    "comments": [
-        {
-            "id": "0",
-            "tripId": "0",
-            "text": "This was a great trip!"
-        },
-        {
-            "id": "1",
-            "tripId": "0",
-            "text": "Can't wait to go again!"
-        }
-    ],
-
-
-    "hotels": [
-        {
-            "id": 0,
-            "name": "Hilton"
-        },
-        {
-            "id": 1,
-            "name": "DoubleTree"
-        }
-    ],
-
-    "transport": {
-        "airline": [
-            { 
-                "id": "0", 
-                "name": "American Airlines" 
-            },
-            { 
-                "id": "1", 
-                "name": "Delta"
-            },
-            {
-                "id": "2",
-                "name": "Korean Airlines"
-            }
-        ],
-        "car_rental": [
-            { "id": "HZ", "name": "Hertz" },
-            { "id": "EN", "name": "Enterprise" }
-        ],
-        "train": [
-            { "id": "AM", "name": "Amtrak" },
-            { "id": "EU", "name": "Eurostar" }
-        ]
+  "users": [
+    {
+      "id": "0",
+      "name": "Ashton",
+      "bookmarked": [
+        0
+      ]
     }
-    
+  ],
+  "bookmarked": [],
+  "trips": [
+    {
+      "id": "174e",
+      "legs": [
+        {
+          "id": 1765163441984,
+          "startDate": "6/2/2026",
+          "startLoc": "Las Vegas",
+          "endLoc": "Oahu, Hawaii",
+          "accommodationType": "hotel",
+          "hotelName": "Hilton",
+          "accommodationStatus": true,
+          "transportType": "airline",
+          "transportName": "American Airlines",
+          "comments": "",
+          "editing": true
+        },
+        {
+          "id": 1765163505877,
+          "startDate": "6/10/2026",
+          "startLoc": "Oahu, Hawaii",
+          "endLoc": "Honolulu, Hawaii",
+          "accommodationType": "hotel",
+          "hotelName": "Hilton",
+          "accommodationStatus": false,
+          "transportType": "airline",
+          "transportName": "American Airlines",
+          "comments": "Going to go scuba diving",
+          "editing": true
+        }
+      ],
+      "name": "Hawaii 2026",
+      "bookmarkedAt": null
+    }
+  ],
+  "comments": [
+    {
+      "id": "0",
+      "tripId": "0",
+      "text": "This was a great trip!"
+    },
+    {
+      "id": "1",
+      "tripId": "0",
+      "text": "Can't wait to go again!"
+    }
+  ],
+  "hotels": [
+    {
+      "id": "0",
+      "name": "Hilton"
+    },
+    {
+      "id": "1",
+      "name": "DoubleTree"
+    },
+    {
+      "id": "2",
+      "name": "Mariott"
+    }
+  ],
+  "transport": {
+    "airline": [
+      {
+        "id": "0",
+        "name": "American Airlines"
+      },
+      {
+        "id": "1",
+        "name": "Delta"
+      },
+      {
+        "id": "2",
+        "name": "Korean Airlines"
+      },
+      {
+        "id": "3",
+        "name": "British Airways"
+      }
+    ],
+    "car_rental": [
+      {
+        "id": "0",
+        "name": "Hertz"
+      },
+      {
+        "id": "1",
+        "name": "Enterprise"
+      }
+    ],
+    "train": [
+      {
+        "id": "0",
+        "name": "Amtrak"
+      },
+      {
+        "id": "1",
+        "name": "Eurostar"
+      },
+      {
+        "id": "2",
+        "name": "JR"
+      }
+    ]
+  }
 }
