@@ -100,6 +100,11 @@ export default function TripPlannerHome() {
                                         <p className="mb-0">
                                             Legs: {trip.legs?.length || 0}
                                         </p>
+                                        {trip.bookmarkedAt && (
+                                            <p className="text-muted mb-1">
+                                                Bookmarked on: {new Date(trip.bookmarkedAt).toLocaleDateString()}
+                                            </p>
+                                        )}
                                     </div>
                                     <div className="d-flex justify-content-between mt-3">
                                         <Link to={`/trips/${trip.id}`}>

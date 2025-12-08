@@ -23,7 +23,7 @@ export default function TripLegBlock({ data, onDelete }) {
             )}
 
             <div>
-                <strong>Has Accommodation?</strong> {data.accommodationStatus ? "Yes" : "No"}
+                <strong>Already booked accommodation?</strong> {data.accommodationStatus ? "Yes" : "No"}
             </div>
 
             {data.comments && (
